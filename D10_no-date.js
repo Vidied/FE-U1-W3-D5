@@ -338,34 +338,100 @@ const newestMovie = (x) => {
 };
 
 c(newestMovie(movies));
+
 /* ESERCIZIO 13
   Scrivi una funzione chiamata countMovies che ritorna il numero di film contenuti nell'array "movies" fornito.
 */
+
+const countMovies = () => {
+  const numeroFilm = movies.length;
+  return numeroFilm;
+};
+
+c(countMovies(movies));
 
 /* ESERCIZIO 14
   Scrivi una funzione chiamata "onlyTheYears" che crea un array con solamente gli anni di uscita dei film contenuti nell'array "movies" fornito.
 */
 
+const onlyTheYears = (x) => {
+  const annoUscita = [];
+  for (let i = 0; i < movies.length; i++) annoUscita.push(movies[i].Year);
+  return annoUscita;
+};
+
+c(onlyTheYears(movies));
+
 /* ESERCIZIO 15
   Scrivi una funzione chiamata "onlyInLastMillennium" che ritorna solamente i film prodotto nel millennio scorso contenuti nell'array "movies" fornito.
 */
+
+const onlyInLastMillennium = (x) => {
+  const ceraunavolta = [];
+  for (let i = 0; i < x.length; i++)
+    if (Number(x[i].Year) < 2000) {
+      ceraunavolta.push(x[i].Year);
+    }
+  return ceraunavolta;
+};
+
+c(onlyInLastMillennium(movies));
 
 /* ESERCIZIO 16
   Scrivi una funzione chiamata "sumAllTheYears" che ritorna la somma di tutti gli anni in cui sono stati prodotti i film contenuti nell'array "movies" fornito.
 */
 
+const sumAllTheYears = (x) => {
+  let somma = 0;
+  for (let i = 0; i < x.length; i++) somma = somma + Number(x[i].Year);
+  return somma;
+};
+
+c(sumAllTheYears(movies));
+
 /* ESERCIZIO 17
   Scrivi una funzione chiamata "searchByTitle" che riceve una stringa come parametro e ritorna i film nell'array "movies" fornito che la contengono nel titolo.
 */
+
+const searchByTitle = (x, y) => {
+  for (let i = 0; i < x.length; i++)
+    if (x[i].Title.includes(y)) {
+      c(x[i]);
+    }
+};
+
+searchByTitle(movies, "Lord of the Flies");
 
 /* ESERCIZIO 18
   Scrivi una funzione chiamata "searchAndDivide" che riceve una stringa come parametro e ritorna un oggetto contenente due array: "match" e "unmatch".
   "match" deve includere tutti i film dell'array "movies" fornito che contengono la stringa fornita all'interno del proprio titolo, mentre "unmatch" deve includere tutti i rimanenti.
 */
 
+const searchAndDivide = (x, y, z) => {
+  const match = [];
+  const unmatch = [];
+  for (let i = 0; i < x.length; i++)
+    if (x[i][y].includes(z)) {
+      match.push(x[i]);
+    } else {
+      unmatch.push(x[i]);
+    }
+  return { match: match, unmatch: unmatch };
+};
+
+c(searchAndDivide(movies, "Year", "2002"));
+c(searchAndDivide(movies, "Title", "o"));
+
 /* ESERCIZIO 19
   Scrivi una funzione chiamata "removeIndex" che riceve un numero come parametro e ritorna l'array "movies" fornito privo dell'elemento nella posizione ricevuta come parametro.
 */
+
+const removeIndex = (x) => {
+  movies.splice(x, 1);
+  return movies;
+};
+
+c(removeIndex(2));
 
 // DOM (nota: gli elementi che selezionerai non si trovano realmente nella pagina)
 
